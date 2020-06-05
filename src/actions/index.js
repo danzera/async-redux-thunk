@@ -1,13 +1,10 @@
 import jsonPlaceholder from '../apis/json-placeholder';
 
-export const fetchPosts = async () => {
-	// bad approach - breaks the rules of action creators with Redux
-	// Babel transpiles this function into different looking code
-	// aync-await returns a request object the first time the action creator is called
-	const response = await jsonPlaceholder.get('/posts');
+// generally return an arrow function when returning a function from an action creatore with redux-thunk
+// don't have to list the getState arg unless you're using it - listed here just for example purposes
+// since we are returning a function we can eliminate the braces following the first arrow function
+export const fetchPosts = () => async (dispatch, getState) => {
+		const response = await jsonPlaceholder.get('/posts');
 
-	return {
-		type: 'FETCH_POSTS',
-		payload: response
-	};
+		dispatch({ type: 'FETCH_POSTS', payload: response });
 };

@@ -7,12 +7,14 @@
 
 // state will be a list of records eventually, so default state to an empty array 
 export default (state = [], action) => {
-	if (action.type === 'FETCH_POSTS') {
-		return action.payload;
+	// reducers generall use switch statements as opposed to if statements
+	// often times the switch statements will end up having multiple cases
+	switch (action.type) {
+		case 'FETCH_POSTS':
+			console.log('fetch posts')
+			return action.payload;
+		// include default to ensure we always return some value from our reducer
+		default:
+			return state;
 	}
-
-	// just return the previous state if the action type does not match
-	// reducers must have a default return statement
-	// if the state passed to the reducer is undefined, you must explicitly return the initial state
-	return state;
 };

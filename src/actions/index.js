@@ -6,5 +6,6 @@ import jsonPlaceholder from '../apis/json-placeholder';
 export const fetchPosts = () => async (dispatch, getState) => {
 		const response = await jsonPlaceholder.get('/posts');
 
-		dispatch({ type: 'FETCH_POSTS', payload: response });
+		// we only care about the data property on the response, generally speaking
+		dispatch({ type: 'FETCH_POSTS', payload: response.data });
 };

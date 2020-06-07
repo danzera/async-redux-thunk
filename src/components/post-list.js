@@ -8,6 +8,7 @@ class PostList extends React.Component {
 	}
 
 	render() {
+		console.log('this.props.posts', this.props.posts);
 		return (
 			<div className="post-list">
 				PostList
@@ -16,5 +17,13 @@ class PostList extends React.Component {
 	}
 }
 
+// any time we want data in our React component from the Redux side of our app, we define a mapStateToProps() function
+const mapStateToProps = state => {
+	return { posts: state.posts };
+}
 
-export default connect(null, { fetchPosts })(PostList);
+// mapStateToProps gets passed off to the connect() function
+export default connect(
+	mapStateToProps,
+	{ fetchPosts }
+)(PostList);

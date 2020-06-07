@@ -7,6 +7,7 @@
 
 // state will be a list of records eventually, so default state to an empty array 
 export default (state = [], action) => {
+	console.log('action type run', action.type);
 	// reducers generall use switch statements as opposed to if statements
 	// often times the switch statements will end up having multiple cases
 	switch (action.type) {

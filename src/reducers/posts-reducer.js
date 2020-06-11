@@ -11,7 +11,6 @@ export default (state = [], action) => {
 	// often times the switch statements will end up having multiple cases
 	switch (action.type) {
 		case 'FETCH_POSTS':
-			console.log('fetch posts')
 			return action.payload;
 		// include default to ensure we always return some value from our reducer
 		default:

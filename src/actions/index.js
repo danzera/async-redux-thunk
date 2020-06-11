@@ -9,3 +9,9 @@ export const fetchPosts = () => async (dispatch, getState) => {
 		// we only care about the data property on the response, generally speaking
 		dispatch({ type: 'FETCH_POSTS', payload: response.data });
 };
+
+export const fetchUser = userId => async dispatch => {
+	const response = await jsonPlaceholder.get(`/users/${userId}`);
+
+	dispatch({ type: 'FETCH_USER', payload: response.data });
+}

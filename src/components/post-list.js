@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../actions';
+import UserHeader from './user-header';
 
 class PostList extends React.Component {
 	componentDidMount() {
@@ -9,6 +10,8 @@ class PostList extends React.Component {
 
 	renderList() {
 		return this.props.posts.map(post => {
+			// pass userId from post object down to UserHeader component
+			// so it can call json placeholder API for user info
 			return (
 				<div className="item" key={post.id}>
 					<i className="large middle aligned icon user" />
@@ -16,6 +19,7 @@ class PostList extends React.Component {
 						<h2>{post.title}</h2>
 						<p>{post.body}</p>
 					</div>
+					<UserHeader userId={post.userId} />
 				</div>
 			);
 		});
